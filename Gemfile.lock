@@ -1,0 +1,16 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.0.7)
+    hpricot (0.8.4)
+    nokogiri (1.4.4)
+    rockstar (0.6.0)
+      activesupport (>= 1.4.2)
+      hpricot (>= 0.4.86)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  nokogiri
+  rockstar
