@@ -2,15 +2,27 @@ GEM
   remote: http://rubygems.org/
   specs:
     activesupport (3.0.7)
+    awesome_print (0.4.0)
+    diff-lcs (1.1.2)
     hpricot (0.8.4)
     nokogiri (1.4.4)
     rockstar (0.6.0)
       activesupport (>= 1.4.2)
       hpricot (>= 0.4.86)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-core (2.6.3)
+    rspec-expectations (2.6.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.6.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   nokogiri
   rockstar
+  rspec
