@@ -1,0 +1,433 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://ws.audioscrobbler.com:80/2.0/?api_key=abcdefghijklmnopqrstuvwxyz&artist=Taylor%20Swift&method=artist.getTopTags
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      date: 
+      - Sun, 05 Jun 2011 11:44:04 GMT
+      server: 
+      - Apache/1.3.39 (Unix)
+      x-proxy-fix-up: 
+      - headers fixed up
+      x-web-node: 
+      - www157
+      cache-control: 
+      - max-age=345600
+      expires: 
+      - Thu, 09 Jun 2011 11:44:04 GMT
+      content-type: 
+      - text/xml; charset=utf-8;
+    body: |
+      <?xml version="1.0" encoding="utf-8"?>
+      <lfm status="ok">
+      <toptags artist="Taylor Swift">
+          <tag>
+          <name>country</name> 
+          <count>100</count>
+          <url>http://www.last.fm/tag/country</url>
+      </tag>    <tag>
+          <name>female vocalists</name> 
+          <count>58</count>
+          <url>http://www.last.fm/tag/female%20vocalists</url>
+      </tag>    <tag>
+          <name>pop</name> 
+          <count>57</count>
+          <url>http://www.last.fm/tag/pop</url>
+      </tag>    <tag>
+          <name>singer-songwriter</name> 
+          <count>37</count>
+          <url>http://www.last.fm/tag/singer-songwriter</url>
+      </tag>    <tag>
+          <name>acoustic</name> 
+          <count>28</count>
+          <url>http://www.last.fm/tag/acoustic</url>
+      </tag>    <tag>
+          <name>taylor swift</name> 
+          <count>15</count>
+          <url>http://www.last.fm/tag/taylor%20swift</url>
+      </tag>    <tag>
+          <name>country pop</name> 
+          <count>7</count>
+          <url>http://www.last.fm/tag/country%20pop</url>
+      </tag>    <tag>
+          <name>american</name> 
+          <count>7</count>
+          <url>http://www.last.fm/tag/american</url>
+      </tag>    <tag>
+          <name>female</name> 
+          <count>3</count>
+          <url>http://www.last.fm/tag/female</url>
+      </tag>    <tag>
+          <name>female vocalist</name> 
+          <count>2</count>
+          <url>http://www.last.fm/tag/female%20vocalist</url>
+      </tag>    <tag>
+          <name>contemporary country</name> 
+          <count>2</count>
+          <url>http://www.last.fm/tag/contemporary%20country</url>
+      </tag>    <tag>
+          <name>Love</name> 
+          <count>2</count>
+          <url>http://www.last.fm/tag/love</url>
+      </tag>    <tag>
+          <name>00s</name> 
+          <count>2</count>
+          <url>http://www.last.fm/tag/00s</url>
+      </tag>    <tag>
+          <name>amazing</name> 
+          <count>2</count>
+          <url>http://www.last.fm/tag/amazing</url>
+      </tag>    <tag>
+          <name>pop country</name> 
+          <count>2</count>
+          <url>http://www.last.fm/tag/pop%20country</url>
+      </tag>    <tag>
+          <name>modern country</name> 
+          <count>2</count>
+          <url>http://www.last.fm/tag/modern%20country</url>
+      </tag>    <tag>
+          <name>beautiful</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/beautiful</url>
+      </tag>    <tag>
+          <name>&lt;3</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/%3C3</url>
+      </tag>    <tag>
+          <name>cute</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/cute</url>
+      </tag>    <tag>
+          <name>rock</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/rock</url>
+      </tag>    <tag>
+          <name>teen pop</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/teen%20pop</url>
+      </tag>    <tag>
+          <name>guilty pleasure</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/guilty%20pleasure</url>
+      </tag>    <tag>
+          <name>Female country</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/female%20country</url>
+      </tag>    <tag>
+          <name>taylor</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/taylor</url>
+      </tag>    <tag>
+          <name>pop rock</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/pop%20rock</url>
+      </tag>    <tag>
+          <name>romantic</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/romantic</url>
+      </tag>    <tag>
+          <name>lovely</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/lovely</url>
+      </tag>    <tag>
+          <name>folk</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/folk</url>
+      </tag>    <tag>
+          <name>Awesome</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/awesome</url>
+      </tag>    <tag>
+          <name>love story</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/love%20story</url>
+      </tag>    <tag>
+          <name>talented</name> 
+          <count>1</count>
+          <url>http://www.last.fm/tag/talented</url>
+      </tag>    <tag>
+          <name>USA</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/usa</url>
+      </tag>    <tag>
+          <name>adorable</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/adorable</url>
+      </tag>    <tag>
+          <name>easy listening</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/easy%20listening</url>
+      </tag>    <tag>
+          <name>you cannot listen to this without singing along</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/you%20cannot%20listen%20to%20this%20without%20singing%20along</url>
+      </tag>    <tag>
+          <name>2000s</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/2000s</url>
+      </tag>    <tag>
+          <name>singer-songwriters</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/singer-songwriters</url>
+      </tag>    <tag>
+          <name>people who make my world a better place for one reason or another</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/people%20who%20make%20my%20world%20a%20better%20place%20for%20one%20reason%20or%20another</url>
+      </tag>    <tag>
+          <name>Favorite</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/favorite</url>
+      </tag>    <tag>
+          <name>diva</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/diva</url>
+      </tag>    <tag>
+          <name>female artists</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/female%20artists</url>
+      </tag>    <tag>
+          <name>sweet</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/sweet</url>
+      </tag>    <tag>
+          <name>catchy</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/catchy</url>
+      </tag>    <tag>
+          <name>Disney</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/disney</url>
+      </tag>    <tag>
+          <name>guitar</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/guitar</url>
+      </tag>    <tag>
+          <name>country divas</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/country%20divas</url>
+      </tag>    <tag>
+          <name>english</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/english</url>
+      </tag>    <tag>
+          <name>want to see live</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/want%20to%20see%20live</url>
+      </tag>    <tag>
+          <name>amazing voices</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/amazing%20voices</url>
+      </tag>    <tag>
+          <name>girly</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/girly</url>
+      </tag>    <tag>
+          <name>female vocals</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/female%20vocals</url>
+      </tag>    <tag>
+          <name>songwriter</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/songwriter</url>
+      </tag>    <tag>
+          <name>singer</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/singer</url>
+      </tag>    <tag>
+          <name>hot</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/hot</url>
+      </tag>    <tag>
+          <name>Fearless</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/fearless</url>
+      </tag>    <tag>
+          <name>love at first listen</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/love%20at%20first%20listen</url>
+      </tag>    <tag>
+          <name>linda</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/linda</url>
+      </tag>    <tag>
+          <name>Top country ladies</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/top%20country%20ladies</url>
+      </tag>    <tag>
+          <name>indie</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/indie</url>
+      </tag>    <tag>
+          <name>sexy</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/sexy</url>
+      </tag>    <tag>
+          <name>Country-Pop</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/country-pop</url>
+      </tag>    <tag>
+          <name>United States</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/united%20states</url>
+      </tag>    <tag>
+          <name>amazing voice</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/amazing%20voice</url>
+      </tag>    <tag>
+          <name>Speak Now</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/speak%20now</url>
+      </tag>    <tag>
+          <name>come to brazil</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/come%20to%20brazil</url>
+      </tag>    <tag>
+          <name>female singers</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/female%20singers</url>
+      </tag>    <tag>
+          <name>perfeita</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/perfeita</url>
+      </tag>    <tag>
+          <name>country rock</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/country%20rock</url>
+      </tag>    <tag>
+          <name>Love her</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/love%20her</url>
+      </tag>    <tag>
+          <name>Favourites</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/favourites</url>
+      </tag>    <tag>
+          <name>favorite singers</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/favorite%20singers</url>
+      </tag>    <tag>
+          <name>better than kanye west</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/better%20than%20kanye%20west</url>
+      </tag>    <tag>
+          <name>wonderful</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/wonderful</url>
+      </tag>    <tag>
+          <name>Pennsylvania</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/pennsylvania</url>
+      </tag>    <tag>
+          <name>Awesome Country</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/awesome%20country</url>
+      </tag>    <tag>
+          <name>favourite</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/favourite</url>
+      </tag>    <tag>
+          <name>Easy To Listen To</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/easy%20to%20listen%20to</url>
+      </tag>    <tag>
+          <name>avril lavigne</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/avril%20lavigne</url>
+      </tag>    <tag>
+          <name>relaxing</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/relaxing</url>
+      </tag>    <tag>
+          <name>country women</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/country%20women</url>
+      </tag>    <tag>
+          <name>favorites</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/favorites</url>
+      </tag>    <tag>
+          <name>best</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/best</url>
+      </tag>    <tag>
+          <name>rawr</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/rawr</url>
+      </tag>    <tag>
+          <name>female vocal</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/female%20vocal</url>
+      </tag>    <tag>
+          <name>fun</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/fun</url>
+      </tag>    <tag>
+          <name>overrated</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/overrated</url>
+      </tag>    <tag>
+          <name>female singer</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/female%20singer</url>
+      </tag>    <tag>
+          <name>my girls</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/my%20girls</url>
+      </tag>    <tag>
+          <name>Female jazz vocalists</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/female%20jazz%20vocalists</url>
+      </tag>    <tag>
+          <name>country music</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/country%20music</url>
+      </tag>    <tag>
+          <name>girlie</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/girlie</url>
+      </tag>    <tag>
+          <name>love songs</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/love%20songs</url>
+      </tag>    <tag>
+          <name>FUCKING AWESOME</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/fucking%20awesome</url>
+      </tag>    <tag>
+          <name>favourite artists</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/favourite%20artists</url>
+      </tag>    <tag>
+          <name>tgpop</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/tgpop</url>
+      </tag>    <tag>
+          <name>Selena Gomez</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/selena%20gomez</url>
+      </tag>    <tag>
+          <name>good</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/good</url>
+      </tag>    <tag>
+          <name>screamo</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/screamo</url>
+      </tag>    <tag>
+          <name>kanye was right</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/kanye%20was%20right</url>
+      </tag>    <tag>
+          <name>Best female rock artist</name> 
+          <count>0</count>
+          <url>http://www.last.fm/tag/best%20female%20rock%20artist</url>
+      </tag></toptags></lfm>
+
+    http_version: "1.0"

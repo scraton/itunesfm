@@ -24,4 +24,8 @@ describe ITunes::Track do
       end
     end
   end
+
+  context "lastfm" do
+    it "should give a list of tags"
+  end
 end
