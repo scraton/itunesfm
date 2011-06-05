@@ -1,4 +1,5 @@
 require 'itunes/library'
+require 'itunes/artist'
 require 'itunes/track'
 
 module ITunes

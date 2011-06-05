@@ -13,7 +13,7 @@ describe ITunes::Track do
     end
     
     it "should assign the track artist" do
-      @track.artist.should == "Cassie"
+      @track.artist.should be_an ITunes::Artist
     end
     
     context "track times" do

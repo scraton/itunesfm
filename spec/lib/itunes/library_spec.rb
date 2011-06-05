@@ -12,4 +12,11 @@ describe ITunes::Library do
   it "should return a list of Tracks" do
     @itunes.tracks.first.should be_an_instance_of ITunes::Track
   end
+  
+  context "should return a list of artists" do
+    subject { @itunes.artists }
+    it { should have(3).things }
+    
+    it { @itunes.artists.first.should be_an_instance_of ITunes::Artist }
+  end
 end

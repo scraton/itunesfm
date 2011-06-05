@@ -14,7 +14,7 @@ module ITunes
     
     def initialize(hash = {})
       self.title      = hash["Name"]
-      self.artist     = hash["Artist"]
+      self.artist     = Artist.new hash["Artist"]
       self.album      = hash["Album"]
       self.genre      = hash["Genre"]
       self.time       = hash["Time"]
