@@ -6,8 +6,7 @@ require 'rubygems'
 require 'bundler'
 require 'rspec'
 
-require 'fakeweb'
-require 'vcr'
+Bundler.require(:default, :test)
 
 require 'itunes'
 
