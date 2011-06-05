@@ -25,5 +25,15 @@ module ITunes
       self.created_at = Time.new(hash["Date Added"]) unless hash["Date Added"].nil?
       self.updated_at = Time.new(hash["Date Modified"]) unless hash["Date Modified"].nil?
     end
+    
+    def tags
+      lastfm_track.tags.map(&:name)
+    end
+    
+    protected
+    
+    def lastfm_track
+      Rockstar::Track.new(self.artist.name, self.title)
+    end
   end
 end

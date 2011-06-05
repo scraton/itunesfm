@@ -26,6 +26,16 @@ describe ITunes::Track do
   end
 
   context "lastfm" do
-    it "should give a list of tags"
+    around(:each) do |example|
+      VCR.use_cassette("track_tags",
+                  :record => :new_episodes,
+                  &example)
+    end
+    
+    before { @track = ITunes::Track.new({"Name"=>"Me & U", "Artist"=>"Cassie"}) }
+    
+    it "should give a list of tags" do
+      @track.tags[0..4].should == ["rnb", "dance", "cassie", "pop", "Hip-Hop"]
+    end
   end
 end
