@@ -16,7 +16,15 @@ module ITunes
     def artists
       @artists.map(&:last)
     end
-  
+    
+    def tags
+      tags = []
+      artists.each do |artist|
+        tags += artist.tags[0..9]
+      end
+      tags
+    end
+    
     private
   
     def parse

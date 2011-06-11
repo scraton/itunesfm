@@ -10,4 +10,5 @@ group :test, :development do
   gem 'awesome_print'
   gem 'fakeweb'
   gem 'vcr'
+  gem 'ruby-debug19'
 end
