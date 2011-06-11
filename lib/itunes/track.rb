@@ -1,5 +1,6 @@
 module ITunes
   class Track
+    attr :id, true
     attr :title, true
     attr :artist, true
     attr :album, true
@@ -13,6 +14,7 @@ module ITunes
     attr :updated_at, true
     
     def initialize(hash = {})
+      self.id         = hash["Track ID"]
       self.title      = hash["Name"]
       self.artist     = Artist.new hash["Artist"]
       self.album      = hash["Album"]

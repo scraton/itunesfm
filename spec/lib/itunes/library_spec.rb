@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 describe ITunes::Library do
@@ -11,11 +12,21 @@ describe ITunes::Library do
     library.tracks.first.should be_an_instance_of ITunes::Track
   end
   
-  context "should return a list of artists" do
+  context "artists" do
     subject { library.artists }
     it { should have(3).things }
     
     it { library.artists.first.should be_an_instance_of ITunes::Artist }
+  end
+  
+  context "playlists" do
+    it "should give me a list of playlists" do
+      library.playlists.map(&:name).should == ["Library","Music","Movies","TV Shows","Podcasts","Books","iTunes DJ","90’s Music","Classical Music","Music Videos","My Top Rated","Recently Added","Recently Played","Top 25 Most Played","My Playlist"]
+    end
+    
+    it "should have a list of Tracks" do
+      library.playlists.first.tracks.first.should be_an_instance_of ITunes::Track
+    end
   end
   
   context "lastfm" do

@@ -2,19 +2,16 @@ require 'nokogiri'
 
 module ITunes
   class Library
-    def initialize(library_path)
-      @doc     = Nokogiri.XML File.open(library_path)
-      @tracks  = []
-      @artists = {}
-      parse
-    end
-  
-    def tracks
-      @tracks
-    end
+    attr :tracks, true
+    attr :artists, true
+    attr :playlists, true
     
-    def artists
-      @artists.map(&:last)
+    def initialize(library_path)
+      @doc       = Nokogiri.XML File.open(library_path)
+      @artists   = []
+      @tracks    = []
+      @playlists = []
+      parse
     end
     
     def tags
@@ -28,17 +25,38 @@ module ITunes
     private
   
     def parse
+      parse_tracks
+      parse_playlists
+    end
+    
+    def parse_tracks
       @doc.xpath('/plist/dict/dict/dict').each do |node|
         children = node.children.map(&:text).reject { |x| x.strip.empty? }
         
         hash     = Hash[children.each_cons(2).to_a]
-        artist   = @artists[hash["Artist"].to_s] if @artists.key? hash["Artist"].to_s
+        artist   = @artists.detect { |a| a.name == hash["Artist"] }
         
         track    = Track.new hash
+        @artists << track.artist if artist.nil?
         artist ||= track.artist
         
-        @artists[artist.name.to_s] = artist
         @tracks  << track
+      end
+    end
+    
+    def parse_playlists
+      @doc.xpath('/plist/dict/array/dict').each do |node|
+        children = node.children.map(&:text).reject { |x| x.strip.empty? }
+        hash     = Hash[children.each_cons(2).to_a]
+        
+        @playlists << ITunes::Playlist.new(hash["Name"])
+        playlist = @playlists.last
+        
+        node.xpath('array/dict').each do |track|
+          children  = track.children.map(&:text).reject { |x| x.strip.empty? }
+          hash      = Hash[children.each_cons(2).to_a]
+          playlist.tracks << @tracks.detect {|t| hash["Track ID"] == t.id }
+        end
       end
     end
   end
