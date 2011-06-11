@@ -55,7 +55,7 @@ module ITunes
         node.xpath('array/dict').each do |track|
           children  = track.children.map(&:text).reject { |x| x.strip.empty? }
           hash      = Hash[children.each_cons(2).to_a]
-          playlist.tracks << @tracks.detect {|t| hash["Track ID"] == t.id }
+          playlist.tracks << @tracks.detect {|t| t.id == hash["Track ID"] }
         end
       end
     end
