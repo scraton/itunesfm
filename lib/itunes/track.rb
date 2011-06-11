@@ -1,17 +1,6 @@
 module ITunes
   class Track
-    attr :id, true
-    attr :title, true
-    attr :artist, true
-    attr :album, true
-    attr :genre, true
-    attr :time, true
-    attr :year, true
-    attr :bpm, true
-    attr :location, true
-    attr :played_at, true
-    attr :created_at, true
-    attr :updated_at, true
+    attr_accessor :id, :title, :artist, :album, :genre, :time, :year, :bpm, :location, :played_at, :created_at, :updated_at
     
     def initialize(hash = {})
       self.id         = hash["Track ID"]

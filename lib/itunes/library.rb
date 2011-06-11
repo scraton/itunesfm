@@ -2,9 +2,7 @@ require 'nokogiri'
 
 module ITunes
   class Library
-    attr :tracks, true
-    attr :artists, true
-    attr :playlists, true
+    attr_reader :tracks, :artists, :playlists
     
     def initialize(library_path)
       @doc       = Nokogiri.XML File.open(library_path)
