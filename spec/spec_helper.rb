@@ -9,6 +9,7 @@ require 'rspec'
 Bundler.require(:default, :test)
 
 require 'itunes'
+require 'itunesfm'
 
 Dir["#{File.expand_path('../support', __FILE__)}/*.rb"].each do |file|
   require file
