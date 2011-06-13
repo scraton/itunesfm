@@ -1,1 +1,1 @@
-rvm --create use 1.9.2-p180@itunesfm > /dev/null
+rvm --create use macruby@itunesfm > /dev/null
