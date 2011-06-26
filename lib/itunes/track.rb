@@ -8,10 +8,6 @@ class ITunesTrack
     queue.map(&:persistentID).include? self.persistentID
   end
   
-  def not_queued?(queue)
-    !queued?(queue)
-  end
-  
   def inspect
     %(#<#{self.class.name}:#{self}>)
   end

@@ -3,16 +3,11 @@ require File.join File.expand_path('..', __FILE__), '..', 'lib', 'itunesdj.rb'
 describe ITunesDJ do
   let(:djplaylist) { mock("ITunesUserPlaylist") }
   let(:source) { mock("ITunesUserPlaylist") }
-  let(:itunesdj) { ITunesDJ.new(djplaylist) }
+  let(:itunesdj) { ITunesDJ.new(djplaylist, source) }
   let(:tracks) { [mock(ITunesTrack, :playedDate => Time.now), mock(ITunesTrack, :playedDate => Time.now)] }
     
   it "should initialize off the iTunes DJ Playlist" do
     itunesdj.should be
-  end
-  
-  it "should allow tracking of a source playlist" do
-    itunesdj.source = source
-    itunesdj.source.should == source
   end
   
   context "#current_track" do

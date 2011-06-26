@@ -3,16 +3,14 @@ require File.join(File.expand_path('..', __FILE__), 'itunes', 'track.rb')
 class ITunesDJ
   attr_accessor :source, :minimum
   
-  def initialize(playlist, opts={})
+  def initialize(playlist, source_playlist)
     @playlist = playlist
+    @source   = source_playlist
+    @source_tracks = []
   end
   
   def playlist
     @playlist
-  end
-  
-  def source=(playlist)
-    @source = playlist
   end
   
   def minimum
@@ -36,17 +34,19 @@ class ITunesDJ
   end
   
   def pick_next_track
-    tracks = source_tracks
-    tracks.sort! { |x,y| ensure_time(x.playedDate) <=> ensure_time(y.playedDate) }
-    tracks.first
+    consider_source_tracks if @source_tracks.empty?
+    track = @source_tracks.first
+    @source_tracks.delete(track)
+    return track
   end
   
   private
   
-  def source_tracks
+  def consider_source_tracks
     @source_tracks = []
-    source.tracks.each { |t| @source_tracks << t unless t.queued? queued_tracks }
-    @source_tracks
+    source.tracks.each { |t| @source_tracks << t }
+    @source_tracks.select! { |t| !(t.queued? queued_tracks) }
+    @source_tracks.sort! { |x,y| ensure_time(x.playedDate) <=> ensure_time(y.playedDate) }
   end
   
   def ensure_time(date)
