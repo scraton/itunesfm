@@ -4,7 +4,7 @@ describe ITunesDJ do
   let(:djplaylist) { mock("ITunesUserPlaylist") }
   let(:source) { mock("ITunesUserPlaylist") }
   let(:itunesdj) { ITunesDJ.new(djplaylist) }
-  let(:tracks) { [mock("ITunesTrack", :playedDate => Time.now), mock("ITunesTrack", :playedDate => Time.now)] }
+  let(:tracks) { [mock(ITunesTrack, :playedDate => Time.now), mock(ITunesTrack, :playedDate => Time.now)] }
     
   it "should initialize off the iTunes DJ Playlist" do
     itunesdj.should be
@@ -25,9 +25,9 @@ describe ITunesDJ do
   context "#queued_tracks" do
     it "should only count tracks that are yet to be played" do
       tracks = [
-        mock("ITunesTrack", :playedDate => Time.now - 60,  :persistentID => '8789EA430AB2EE84', :index => 1),
-        mock("ITunesTrack", :playedDate => Time.now - 240, :persistentID => 'E5F06E038A125D7F', :index => 2),
-        mock("ITunesTrack", :playedDate => Time.now - 120, :persistentID => 'CE8D90D2B7C475D5', :index => 3)
+        mock(ITunesTrack, :playedDate => Time.now - 60,  :persistentID => '8789EA430AB2EE84', :index => 1),
+        mock(ITunesTrack, :playedDate => Time.now - 240, :persistentID => 'E5F06E038A125D7F', :index => 2),
+        mock(ITunesTrack, :playedDate => Time.now - 120, :persistentID => 'CE8D90D2B7C475D5', :index => 3)
       ]
       djplaylist.stub!(:tracks).and_return(tracks)
       djplaylist.stub!(:current_track).and_return(tracks[1])
@@ -66,8 +66,8 @@ describe ITunesDJ do
       
       it "should populate queued tracks, not past tracks" do
         tracks = [
-          mock("ITunesTrack", :playedDate => Time.now - 60,  :persistentID => '8789EA430AB2EE84', :index => 1),
-          mock("ITunesTrack", :playedDate => Time.now - 240, :persistentID => 'E5F06E038A125D7F', :index => 2)
+          mock(ITunesTrack, :playedDate => Time.now - 60,  :persistentID => '8789EA430AB2EE84', :index => 1),
+          mock(ITunesTrack, :playedDate => Time.now - 240, :persistentID => 'E5F06E038A125D7F', :index => 2)
         ]
         djplaylist.stub!(:tracks).and_return(tracks)
         djplaylist.stub!(:current_track).and_return(tracks[1])
@@ -80,14 +80,9 @@ describe ITunesDJ do
   context "#pick_next_track" do
     let(:source_tracks) do
       [
-        mock("ITunesTrack", :playedDate => Time.now - 60,  :persistentID => '8789EA430AB2EE84'),
-        mock("ITunesTrack", :playedDate => Time.now - 240, :persistentID => 'E5F06E038A125D7F')
-      ]
-    end
-    
-    let(:queued_tracks) do
-      [
-        mock("ITunesTrack", :playedDate => Time.now,  :persistentID => 'E5F06E038A125D7F', :index => 1)
+        mock(ITunesTrack, :playedDate => Time.now,       :queued? => true),
+        mock(ITunesTrack, :playedDate => Time.now - 60,  :queued? => false),
+        mock(ITunesTrack, :playedDate => Time.now - 240, :queued? => false)
       ]
     end
     
@@ -103,7 +98,7 @@ describe ITunesDJ do
     end
     
     it "should not pick a song that's already queued" do
-      djplaylist.stub!(:tracks).and_return(queued_tracks)
+      source_tracks.last.stub!(:queued?).and_return(true)
       itunesdj.pick_next_track.should_not == source_tracks.last
     end
   end

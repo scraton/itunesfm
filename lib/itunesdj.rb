@@ -1,3 +1,5 @@
+require File.join(File.expand_path('..', __FILE__), 'itunes', 'track.rb')
+
 class ITunesDJ
   attr_accessor :source, :minimum
   
@@ -35,8 +37,6 @@ class ITunesDJ
   
   def pick_next_track
     tracks = source_tracks
-    queued_track_ids = queued_tracks.map(&:persistentID)
-    tracks.select! { |t| !(queued_track_ids.include? t.persistentID) }
     tracks.sort! { |x,y| ensure_time(x.playedDate) <=> ensure_time(y.playedDate) }
     tracks.first
   end
@@ -45,7 +45,7 @@ class ITunesDJ
   
   def source_tracks
     @source_tracks = []
-    source.tracks.each { |t| @source_tracks << t }
+    source.tracks.each { |t| @source_tracks << t unless t.queued? queued_tracks }
     @source_tracks
   end
   

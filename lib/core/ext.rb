@@ -37,14 +37,3 @@ class ITunesUserPlaylist
     ITunes.current_track if track_ids.include? ITunes.current_track.persistentID
   end
 end
-
-class ITunesTrack
-  def to_s
-    by = artist || albumArtist || '(unknown artist)'
-    "#{by} - #{name}"
-  end
-  
-  def inspect
-    %(#<#{self.class.name}:#{self}>)
-  end
-end
