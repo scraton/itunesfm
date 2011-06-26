@@ -82,7 +82,6 @@ describe ITunesDJ do
     end
     
     before do
-      itunesdj.source = source
       source.stub!(:tracks).and_return(source_tracks)
       itunesdj.stub!(:current_track).and_return(nil)
       djplaylist.stub!(:tracks).and_return([])
