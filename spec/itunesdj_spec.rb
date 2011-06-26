@@ -41,10 +41,12 @@ describe ITunesDJ do
       djplaylist.stub!(:current_track).and_return(nil)
       djplaylist.stub!(:tracks).and_return([])
       source.stub!(:tracks).and_return(tracks)
+      itunesdj.stub!(:pick_next_track).and_return(tracks.first)
     end
     
     it "should populate songs off the source" do
-      tracks.each { |t| djplaylist.should_receive(:<<).with(t) }
+      djplaylist.should_receive(:<<).exactly(itunesdj.minimum).times
+      itunesdj.should_receive(:pick_next_track).exactly(itunesdj.minimum).times
       itunesdj.populate
     end
   
@@ -52,7 +54,7 @@ describe ITunesDJ do
       before { itunesdj.minimum = 1 }
       
       it "should only populate up to the minimum number of songs" do
-        djplaylist.should_receive(:<<).with(tracks.first)
+        djplaylist.should_receive(:<<).with(tracks.first).exactly(1).times
         itunesdj.populate
       end
       
@@ -72,6 +74,37 @@ describe ITunesDJ do
         djplaylist.should_receive(:<<)
         itunesdj.populate
       end
+    end
+  end
+  
+  context "#pick_next_track" do
+    let(:source_tracks) do
+      [
+        mock("ITunesTrack", :playedDate => Time.now - 60,  :persistentID => '8789EA430AB2EE84'),
+        mock("ITunesTrack", :playedDate => Time.now - 240, :persistentID => 'E5F06E038A125D7F')
+      ]
+    end
+    
+    let(:queued_tracks) do
+      [
+        mock("ITunesTrack", :playedDate => Time.now,  :persistentID => 'E5F06E038A125D7F', :index => 1)
+      ]
+    end
+    
+    before do
+      itunesdj.source = source
+      source.stub!(:tracks).and_return(source_tracks)
+      itunesdj.stub!(:current_track).and_return(nil)
+      djplaylist.stub!(:tracks).and_return([])
+    end
+    
+    it "should return the track that hasn't been played the longest" do
+      itunesdj.pick_next_track.should == source_tracks.last
+    end
+    
+    it "should not pick a song that's already queued" do
+      djplaylist.stub!(:tracks).and_return(queued_tracks)
+      itunesdj.pick_next_track.should_not == source_tracks.last
     end
   end
 end

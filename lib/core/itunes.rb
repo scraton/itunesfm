@@ -15,11 +15,11 @@ module ITunes
   self.app
   
   def self.library
-    @library ||= app.sources['Library']
+    @library ||= app.sources.objectWithName('Library')
   end
   
   def self.music
-    library.userPlaylists['Music']
+    library.userPlaylists.objectWithName('Music')
   end
 
   PlayerStates = {
@@ -39,7 +39,7 @@ module ITunes
   end
 
   def self.find_playlist(name)
-    ensure_found library.userPlaylists[name]
+    ensure_found library.userPlaylists.objectWithName(name)
   end
 
   class << self

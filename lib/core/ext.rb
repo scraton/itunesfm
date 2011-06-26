@@ -1,9 +1,3 @@
-class SBElementArray
-  def [](value)
-    self.objectWithName(value)
-  end
-end
-
 class ITunesPlaylist
   SearchFilters = {
     albums: ITunesESrAAlbums,
