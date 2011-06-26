@@ -33,6 +33,15 @@ class ITunesUserPlaylist
     Array(tracks).each { |t| self << t }
     self
   end
+  
+  def track_ids
+    tracks.map(&:persistentID)
+  end
+  
+  def current_track
+    return nil if ITunes.current_track.nil?
+    ITunes.current_track if track_ids.include? ITunes.current_track.persistentID
+  end
 end
 
 class ITunesTrack

@@ -17,8 +17,17 @@ class ITunesDJ
     @minimum || 25
   end
   
+  def current_track
+    playlist.current_track
+  end
+  
+  def queued_tracks
+    return playlist.tracks[(current_track.index)..(playlist.tracks.count - 1)] unless current_track.nil?
+    return playlist.tracks
+  end
+  
   def populate
-    (minimum - playlist.tracks.count).times do |i|
+    (minimum - queued_tracks.count).times do |i|
       playlist << source.tracks[i] if i < source.tracks.count
     end
   end
