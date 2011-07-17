@@ -4,7 +4,7 @@ describe ITunesDJ do
   let(:djplaylist) { mock("ITunesUserPlaylist") }
   let(:source) { mock("ITunesUserPlaylist") }
   let(:itunesdj) { ITunesDJ.new(djplaylist, source) }
-  let(:tracks) { [mock(ITunesTrack, :playedDate => Time.now), mock(ITunesTrack, :playedDate => Time.now)] }
+  let(:tracks) { [mock(ITunesTrack, :playedDate => Time.now, :queued? => false), mock(ITunesTrack, :playedDate => Time.now, :queued? => false)] }
     
   it "should initialize off the iTunes DJ Playlist" do
     itunesdj.should be
@@ -69,6 +69,24 @@ describe ITunesDJ do
         djplaylist.should_receive(:<<)
         itunesdj.populate
       end
+    end
+  end
+  
+  context "#source=" do
+    let(:new_source) { mock("ITunesUserPlaylist", :tracks => [mock(ITunesTrack, :queued? => false)]) }
+
+    before do
+      source.stub!(:tracks).and_return(tracks)
+      djplaylist.stub!(:current_track).and_return(nil)
+      djplaylist.stub!(:tracks).and_return([])
+      itunesdj.source = source
+      itunesdj.minimum = 1
+    end
+    
+    it "should change the tracks to populate from" do
+      itunesdj.source = new_source
+      djplaylist.should_receive(:<<).with(new_source.tracks.first)
+      itunesdj.populate
     end
   end
   

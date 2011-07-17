@@ -5,12 +5,16 @@ class ITunesDJ
   
   def initialize(playlist, source_playlist)
     @playlist = playlist
-    @source   = source_playlist
-    @source_tracks = []
+    self.source = source_playlist
   end
   
   def playlist
     @playlist
+  end
+  
+  def source=(source_playlist)
+    @source = source_playlist
+    @source_tracks = []
   end
   
   def minimum
