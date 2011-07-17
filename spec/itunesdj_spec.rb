@@ -1,10 +1,11 @@
+require 'spec_helper'
 require File.join File.expand_path('..', __FILE__), '..', 'lib', 'itunesdj.rb'
 
 describe ITunesDJ do
   let(:djplaylist) { mock("ITunesUserPlaylist") }
   let(:source) { mock("ITunesUserPlaylist") }
   let(:itunesdj) { ITunesDJ.new(djplaylist, source) }
-  let(:tracks) { [mock(ITunesTrack, :playedDate => Time.now, :queued? => false), mock(ITunesTrack, :playedDate => Time.now, :queued? => false)] }
+  let(:tracks) { [mock(ITunesTrack, :playedDate => Time.now, :queued? => false, :video_kind => :none), mock(ITunesTrack, :playedDate => Time.now, :queued? => false, :video_kind => :none)] }
     
   it "should initialize off the iTunes DJ Playlist" do
     itunesdj.should be
@@ -73,7 +74,7 @@ describe ITunesDJ do
   end
   
   context "#source=" do
-    let(:new_source) { mock("ITunesUserPlaylist", :tracks => [mock(ITunesTrack, :queued? => false)]) }
+    let(:new_source) { mock("ITunesUserPlaylist", :tracks => [mock(ITunesTrack, :queued? => false, :video_kind => :none)]) }
 
     before do
       source.stub!(:tracks).and_return(tracks)
@@ -93,9 +94,9 @@ describe ITunesDJ do
   context "#pick_next_track" do
     let(:source_tracks) do
       [
-        mock(ITunesTrack, :playedDate => Time.now,       :queued? => true),
-        mock(ITunesTrack, :playedDate => Time.now - 60,  :queued? => false),
-        mock(ITunesTrack, :playedDate => Time.now - 240, :queued? => false)
+        mock(ITunesTrack, :playedDate => Time.now,       :queued? => true,  :video_kind => :none),
+        mock(ITunesTrack, :playedDate => Time.now - 60,  :queued? => false, :video_kind => :none),
+        mock(ITunesTrack, :playedDate => Time.now - 240, :queued? => false, :video_kind => :none)
       ]
     end
     
@@ -120,6 +121,11 @@ describe ITunesDJ do
       source_tracks << current_track
       current_track.should_receive(:queued?).with([current_track]).and_return(true)
       itunesdj.pick_next_track.should_not == current_track
+    end
+    
+    it "should not pick videos" do
+      source_tracks.last.stub!(:video_kind).and_return(:tv_show)
+      itunesdj.pick_next_track.should_not == source_tracks.last
     end
   end
   

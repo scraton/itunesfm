@@ -1,0 +1,1 @@
+load_bridge_support_file 'iTunes.bridgesupport'

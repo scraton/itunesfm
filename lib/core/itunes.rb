@@ -24,10 +24,10 @@ module ITunes
 
   PlayerStates = {
     ITunesEPlSStopped => :stopped,
-  	ITunesEPlSPlaying => :playing,
-  	ITunesEPlSPaused => :paused,
-  	ITunesEPlSFastForwarding => :fast_forwarding,
-  	ITunesEPlSRewinding => :rewinding
+    ITunesEPlSPlaying => :playing,
+    ITunesEPlSPaused => :paused,
+    ITunesEPlSFastForwarding => :fast_forwarding,
+    ITunesEPlSRewinding => :rewinding
   }
   
   def self.player_state
