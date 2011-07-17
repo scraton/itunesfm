@@ -20,13 +20,16 @@ dj.playlist.delete_all
 while true
   begin
     # Play 'Darkside Radio' every 15 minutes
-    dj.enqueue_at_top ITunes.music.search("Darkside Radio").sample if Time.now.min % 15 == 0 && Time.now.sec == 0
+    if (Time.now.min % 15).zero? && Time.now.sec.zero?
+      puts "[#{Time.now}] Imaging time!"
+      dj.enqueue_at_top ITunes.music.search("Darkside Radio").sample
+    end
     
     # Change source every other hour
-    if Time.now.hour.even? && Time.now.min == 0 && Time.now.sec == 0
+    if Time.now.hour.even? && Time.now.min.zero? && Time.now.sec.zero?
+      puts "[#{Time.now}] Changing source to #{dj.source.name}"
       dj.source = sources.sample
       dj.playlist.delete_all
-      puts "[#{Time.now}] Changed source to #{dj.source.name}"
     end
     
     dj.populate
