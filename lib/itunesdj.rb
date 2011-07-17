@@ -55,7 +55,7 @@ class ITunesDJ
   def consider_source_tracks
     @source_tracks = []
     source.tracks.each { |t| @source_tracks << t }
-    @source_tracks.select! { |t| !(t.queued? queued_tracks + [current_track]) && (t.video_kind == :none) }
+    @source_tracks.select! { |t| !(t.queued? queued_tracks + [current_track].compact) && (t.video_kind == :none) }
     @source_tracks.sort! { |x,y| ensure_time(x.playedDate) <=> ensure_time(y.playedDate) }
   end
   

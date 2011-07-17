@@ -59,7 +59,7 @@ class ITunesUserPlaylist
   end
   
   def top_offset
-    return current_track.index if name == "iTunes DJ"
+    return current_track.index if current_track && name == "iTunes DJ"
     return 0
   end
   
