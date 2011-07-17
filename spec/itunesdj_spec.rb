@@ -95,6 +95,14 @@ describe ITunesDJ do
       source_tracks.last.stub!(:queued?).and_return(true)
       itunesdj.pick_next_track.should_not == source_tracks.last
     end
+    
+    it "should not pick a song that is currently playing" do
+      current_track = mock(ITunesTrack, :playedDate => Time.now - 360, :index => 0)
+      itunesdj.stub!(:current_track).and_return(current_track)
+      source_tracks << current_track
+      current_track.should_receive(:queued?).with([current_track]).and_return(true)
+      itunesdj.pick_next_track.should_not == current_track
+    end
   end
   
   context "#enqueue_at_top" do
