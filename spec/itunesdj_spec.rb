@@ -96,4 +96,13 @@ describe ITunesDJ do
       itunesdj.pick_next_track.should_not == source_tracks.last
     end
   end
+  
+  context "#enqueue_at_top" do
+    it "should play the track at the top of the list" do
+      top_track = mock(ITunesTrack, :name => "Top Track")
+      djplaylist.stub!(:tracks).and_return(tracks)
+      djplaylist.should_receive(:unshift).with([top_track])
+      itunesdj.enqueue_at_top(top_track)
+    end
+  end
 end

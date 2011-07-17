@@ -22,8 +22,10 @@ class ITunesDJ
   end
   
   def queued_tracks
-    return playlist.tracks[(current_track.index)..(playlist.tracks.count - 1)] unless current_track.nil?
-    return playlist.tracks
+    range = (current_track.index)..(playlist.tracks.count - 1) unless current_track.nil?
+    return playlist.tracks if range.nil?
+    return [playlist.tracks[range.first]] if range.first == range.last # strange macruby bug here
+    return playlist.tracks[range]
   end
   
   def populate
@@ -38,6 +40,10 @@ class ITunesDJ
     track = @source_tracks.first
     @source_tracks.delete(track)
     return track
+  end
+  
+  def enqueue_at_top(*tracks)
+    playlist.unshift(tracks)
   end
   
   private
